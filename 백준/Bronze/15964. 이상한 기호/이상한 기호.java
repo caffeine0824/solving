@@ -7,16 +7,19 @@ import java.io.IOException;
 
 public class Main {
 
+	private static long calculate(long A, long B) {
+		return (A + B) * (A - B);
+	}
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 		
-		int A, B;
+		long A, B;
 		StringTokenizer input = new StringTokenizer(br.readLine());
-		A = Integer.parseInt(input.nextToken());
-		B = Integer.parseInt(input.nextToken());
+		A = Long.parseLong(input.nextToken());
+		B = Long.parseLong(input.nextToken());
 		
-		bw.write((A + B) * (A - B) + "");
+		bw.write(calculate(A, B) + "");
 		
 		bw.flush();
 	}		
