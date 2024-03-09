@@ -12,7 +12,7 @@ public class Main {
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 		
 		int L;
-		long hash;
+		long hash, r;
 		long [] strLong;
 		String str;
 		
@@ -20,10 +20,15 @@ public class Main {
 		str = br.readLine();
 		strLong = new long[L];
 		hash = 0;
-		for(int i = 0; i < L; i++)
-			hash += ((long)str.charAt(i) - 96) * (Math.pow(31, i));
+		for(int i = 0; i < L; i++) {
+			r = 1;
+			for(int j = 0; j < i; j++) {
+				r *= 31;
+				r %= 1234567891;
+			}
+			hash += ((long)str.charAt(i) - 96) * r;
+		}
 		hash %= 1234567891;
-			
 		bw.write(hash + "");
 		bw.flush();
 		
