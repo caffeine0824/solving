@@ -10,31 +10,28 @@ fun main(args: Array<String>) {
     val bw = BufferedWriter(OutputStreamWriter(System.out))
 
     val N = Integer.parseInt(br.readLine()) - 1
-    val length = IntArray(N)
-    val price = IntArray(N)
+    val length = LongArray(N)
+    val price = LongArray(N)
     var st = StringTokenizer(br.readLine())
     for(i in 0 until N)
-        length[i] = Integer.parseInt(st.nextToken())
+        length[i] = st.nextToken().toLong()
     st = StringTokenizer(br.readLine())
     for(i in 0 until N)
-        price[i] = Integer.parseInt(st.nextToken())
+        price[i] = st.nextToken().toLong()
 
     var index = 0
-    var cost = 0
+    var cost:Long = 0
     while(index < N) {
-        for(i in index + 1 until N) {
+        var move:Long = 0
+        for(i in index until N) {
+            move += length[i]
             if(price[i] < price[index]) {
-                var move = 0
-                for(j in index until i)
-                    move += length[j]
+                move -= length[i]
                 cost += price[index] * move
                 index = i
                 break
             }
             else if(i == N - 1) {
-                var move = 0
-                for(j in index..i)
-                    move += length[j]
                 cost += price[index] * move
                 index = N
             }
