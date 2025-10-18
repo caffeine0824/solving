@@ -1,0 +1,18 @@
+import java.io.*;
+
+public class Main {
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+
+        String input;
+
+        while(!(input = br.readLine()).equals("***")) {
+            for(int i = 0; i < input.length(); i++) {
+                bw.write(input.charAt((input.length() - i) - 1));
+            }
+            bw.write("\n");
+        }
+        bw.flush();
+    }
+}
